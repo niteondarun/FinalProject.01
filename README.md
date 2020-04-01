@@ -1,1 +1,3 @@
 # FinalProject.01
+
+//We can all share on here.  It took me a few videos to figure it out but the basics are, commit your updates and changes to your own branches and the team can then review. Once we agree it's awesome, we commit it to the master file (code).  I have made a branch for each us to work in, when you download/clone the file, you can open it in VS.  In the Team Explorer on VS you can see what branch you are on, change and commit/push changes to your branch, we all have access to the master as well. I don't know how to use Github well, all I know is how to clone/download (becuase there is a button to do that) and then push/commit changes meaning they get pushed online so other can see them.  Anything else is beyond what I know but am trying to learn.
