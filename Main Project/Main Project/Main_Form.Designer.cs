@@ -32,6 +32,7 @@
             this.Texts = new System.Windows.Forms.Label();
             this.Welcome = new System.Windows.Forms.Label();
             this.Match = new System.Windows.Forms.Button();
+            this.AuthorBlock = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ClassOptions
@@ -39,7 +40,6 @@
             this.ClassOptions.CheckOnClick = true;
             this.ClassOptions.FormattingEnabled = true;
             this.ClassOptions.Items.AddRange(new object[] {
-
             "ACC105 - Foundations of Accounting I",
             "AM201 - Aviation Law",
             "AM205 - Aircraft Operating Economics",
@@ -98,7 +98,7 @@
             "CS110 - Fundamentals of Programming ",
             "CS113 - Introduction to Programming",
             "CS113 - Introduction to Programming",
-            "CS113L - Intro to Programming Lab"
+            "CS113L - Intro to Programming Lab",
             "CS114 - Intro to Software Engineering",
             "CS114L - Introduction to Software Engineering Lab",
             "CS203 - Sophomore Software Engineering I",
@@ -264,6 +264,17 @@
             this.Match.UseVisualStyleBackColor = true;
             this.Match.Click += new System.EventHandler(this.Match_Click);
             // 
+            // AuthorBlock
+            // 
+            this.AuthorBlock.AutoSize = true;
+            this.AuthorBlock.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AuthorBlock.Location = new System.Drawing.Point(518, 9);
+            this.AuthorBlock.Name = "AuthorBlock";
+            this.AuthorBlock.Size = new System.Drawing.Size(384, 64);
+            this.AuthorBlock.TabIndex = 4;
+            this.AuthorBlock.Text = "Program:  Degree Matcher\r\nPurpose: To allow students to see what degrees they are" +
+    " closest to\r\nAuthor:  Cody.P, Paul Wood, Tyler Scott\r\nDate: April 2,2020";
+            // 
             // Degree_Matcher
             // 
             this.AllowDrop = true;
@@ -272,6 +283,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(917, 514);
+            this.Controls.Add(this.AuthorBlock);
             this.Controls.Add(this.Match);
             this.Controls.Add(this.Welcome);
             this.Controls.Add(this.Texts);
@@ -289,6 +301,7 @@
         private System.Windows.Forms.Label Texts;
         private System.Windows.Forms.Label Welcome;
         private System.Windows.Forms.Button Match;
+        private System.Windows.Forms.Label AuthorBlock;
     }
 }
 
