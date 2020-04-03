@@ -98,7 +98,7 @@
             "CS110 - Fundamentals of Programming ",
             "CS113 - Introduction to Programming",
             "CS113 - Introduction to Programming",
-            "CS113L - Intro to Programming Lab"
+            "CS113L - Intro to Programming Lab",
             "CS114 - Intro to Software Engineering",
             "CS114L - Introduction to Software Engineering Lab",
             "CS203 - Sophomore Software Engineering I",
