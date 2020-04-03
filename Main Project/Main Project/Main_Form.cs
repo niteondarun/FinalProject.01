@@ -1,4 +1,20 @@
-﻿using System;
+﻿/***
+Program:  Degree Matcher
+Purpose: To allow students to see what 
+         degrees they are closest to
+Author:  Cody.P, Paul Wood, Tyler Scott
+Date: April 2,2020
+
+FIX ME: blank entries show up in missing classes
+FIX ME: "added entry" doesn't seem to be working because there is no filter to not include it yet and it still isn't showing up
+FIX ME: Aesthetics of first form
+CHECK ME: is it actually displaying correct information for both the completed classes and the missing classes
+ADD ME: 2nd form with nice top 3 closest to completion degree specific displays to open instead of message boxes
+ADD ME: Gen Ed List to display how many gen ed courses the student has completed and a more accurate credit count
+        that the user is missing in that category.
+**/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,141 +61,182 @@ namespace Main_Project
             //    MessageBox.Show(Data[i]);
             //}
 
-            //begin sorting completed courses
-            List<string>[] DegreeDatabase = new List<string>[11];
-            List<string>[] EmptyDegreeDatabase = new List<string>[11];
+            //Declare Arrays with size equal to entries in DegreeList
+            List<string> DegreeList = new List<string> { "Aeronautical Engineering","Air Traffic Management",
+                "Aviation Management", "Aviation and Operations Management","Computer Science",
+                "Construction Management", "Electrical and Computer Engineering","Electrical Engineering",
+                "Information Technologies","Mechanical Engineering"};
+            List<string>[] DegreeDatabase = new List<string>[DegreeList.Count()];
+            List<string>[] HaveClassesTowardsDegree = new List<string>[DegreeList.Count()];
+            List<string>[] MissingClassesTowardsDegree;
 
-            List<string> EmptyAeroEng = new List<string> { };
-            List<string> EmptyAirTrafMgmt = new List<string> { };
-            List<string> EmptyAviationMgmt = new List<string> { };
-            List<string> EmptyAviationOpMgmt = new List<string> { };
-            List<string> EmptyCompSci = new List<string> { };
-            List<string> EmptyConstMgmt = new List<string> { };
-            List<string> EmptyConstSci = new List<string> { };
-            List<string> EmptyElecAndCompEng = new List<string> { };
-            List<string> EmptyElecEng = new List<string> { };
-            List<string> EmptyIT = new List<string> { };
-            List<string> EmptyMechEng = new List<string> { };
+            //Declare lists to hold classes towards each degree from user entry
+            List<string> HaveAeroEng = new List<string> { };
+            List<string> HaveAirTrafMgmt = new List<string> { };
+            List<string> HaveAviationMgmt = new List<string> { };
+            List<string> HaveAviationOpMgmt = new List<string> { };
+            List<string> HaveCompSci = new List<string> { };
+            List<string> HaveConstMgmt = new List<string> { };
+            List<string> HaveElecAndCompEng = new List<string> { };
+            List<string> HaveElecEng = new List<string> { };
+            List<string> HaveIT = new List<string> { };
+            List<string> HaveMechEng = new List<string> { };
 
-            EmptyDegreeDatabase[0] = EmptyAeroEng;
-            EmptyDegreeDatabase[1] = EmptyAirTrafMgmt;
-            EmptyDegreeDatabase[2] = EmptyAviationMgmt;
-            EmptyDegreeDatabase[3] = EmptyAviationOpMgmt;
-            EmptyDegreeDatabase[4] = EmptyCompSci;
-            EmptyDegreeDatabase[5] = EmptyConstMgmt;
-            EmptyDegreeDatabase[6] = EmptyConstSci;
-            EmptyDegreeDatabase[7] = EmptyElecAndCompEng;
-            EmptyDegreeDatabase[8] = EmptyElecEng;
-            EmptyDegreeDatabase[9] = EmptyIT;
-            EmptyDegreeDatabase[10] = EmptyMechEng;
+            //assign lists to array
+            HaveClassesTowardsDegree[0] = HaveAeroEng;
+            HaveClassesTowardsDegree[1] = HaveAirTrafMgmt;
+            HaveClassesTowardsDegree[2] = HaveAviationMgmt;
+            HaveClassesTowardsDegree[3] = HaveAviationOpMgmt;
+            HaveClassesTowardsDegree[4] = HaveCompSci;
+            HaveClassesTowardsDegree[5] = HaveConstMgmt;
+            HaveClassesTowardsDegree[6] = HaveElecAndCompEng;
+            HaveClassesTowardsDegree[7] = HaveElecEng;
+            HaveClassesTowardsDegree[8] = HaveIT;
+            HaveClassesTowardsDegree[9] = HaveMechEng;
 
-            List<string> AeroEng = new List<string> {"MAT225 - Calculus I", "EG110 - Engineering Design I", "EG498 - Capstone Design I",
-                "CHM120 - General Chemistry I", "PHY215 - Physics I", "MAT275 - Calculus II", "EG499 - Capstone Design III", "EG201 - Fluid Mechanics",
-                "EG202 - Mechanics of Materials I", "EG203 - Dynamics", "EG209 - Thermodynamics I", "EG308 - Gas Dynamics", "EG314 - Aerodynamics",
-                "EG326 - Aircraft Structures", "EG330 - Propulsion", "EG412 - Aircraft Design I", "EG418 - Flight Dynamics I", "EG418FT - Flight Testing",
-                "EG419 - Flight Dynamics II", "EG419FT - Flight Testing", "EG200 - Statics", "EG207 - Instrumentation & Measurements",
-                "EG208 - Materials Science", "EG310 - Junior Engineering Design", "EG316 - Electrical Circuits", "EG333 - Control Systems Analysis",
-                "MAT325 - Calculus III", "MAT330 - Differential Equations", "MAT350 - Linear Algebra", "PHY216 - Physics II", "PHY216L - Physics II Lab",
-                "CHM120L - General Chemistry I Lab", "PHY215L - Physics I Lab",
-                "One of the Following: EG340 - Probability and Statistics for Engineers or MAT730 - Numerical Analysis",
-                "Plus 21 more Credits from General Education"};
-            List<string> AirTrafMgmt = new List<string> { };
-            List<string> AviationMgmt = new List<string> { };
-            List<string> AviationOpMgmt = new List<string> {"MAT225 - Calculus I", "ACC105 - Foundations of Accounting I", "AM201 - Aviation Law",
-                "INT105 - International Business: A Macro Perspective", "MKT105 - Foundations of Marketing", "QSO205 - Business Operations Management",
-                "OL215 - Principles of Management", "OL318 - Employee and Labor Relations", "SB100 - Integration & Application of Business I",
-                "SB105 - Integration & Application of Business II", "AT110 - Fundamentals of Air Traffic Control", "AV220 - Advanced Aircraft and Navigation Systems",
-                "AV306 - Human Factors of Flight", "AV401 - Aerodynamics and Aircraft Performance", "AV410 - Aviation Safety", "AV491 - Aviation Internship II",
-                "PLT101 - Private Pilot Ground" , "PLT102 - Private Pilot Flight", "PLT103 - Instrument Ground Training", "PLT104 - Instrument Flight Training",
-                "PLT105 - Commercial Pilot I", "AV207 - Fundamentals of Instruction", "PLT202 - Certified Flight Instructor I",
-                "PLT203 - Certified Flight Instructor II", "PLT205 - Commercial Pilot II", "PLT305 - Commercial Pilot III", "PLT405 - Commercial Multi-Engine"};
-            List<string> CompSci = new List<string> { "MAT225", "CS203", "CS204", "MAT275", "PHY215", "MAT350", "CS113", "CS113L",
-            "CS114", "CS114L", "CS217", "CS218", "CS219", "CS238", "CS303", "CS304", "CS312", "CS317", "CS321", "CS361",
-            "MAT230", "MAT235", "PHY215L", "CS413", "CS414", "CS490", "CS231", "CS328", "CS331", "CS407", "CS411", "CS425",
-            "EG424", "EG426"};
-            List<string> ConstMgmt = new List<string> { };
-            List<string> ConstSci = new List<string> { };
-            List<string> ElecAndCompEng = new List<string> { };
-            List<string> ElecEng = new List<string> {"MAT225", "EG498", "EG110", "CHM120", "PHY215", "MAT275", "EG499", "CS113",
-            "CS113L", "CS114", "CS114L", "CS219", "EE201", "EE220", "EE310", "EE318", "EE318L", "EE301", "EE301L", "EE330",
-            "EE330L", "EE305", "EE306", "EG207", "EG310", "EG316", "EG333", "EG340", "MAT325", "MAT330", "MAT350", "PHY216",
-            "PHY216L", "CHM120L", "PHY215L" };
-            List<string> IT = new List<string> { };
-            List<string> MechEng = new List<string> { };
+            //Declare lists with complete list of classes for degree
+            List<string> AeroEng = new List<string> {"MAT225", "EG110", "EG498", "CHM120", "PHY215", "MAT275",
+                "EG499", "EG201", "EG202", "EG203", "EG209", "EG308", "EG314", "EG326", "EG330", "EG412",
+                "EG418", "EG418FT", "EG419", "EG419FT", "EG200", "EG207", "EG208", "EG310", "EG316", "EG333",
+                "MAT325", "MAT330", "MAT350", "PHY216", "PHY216L", "CHM120L", "PHY215L",
+                "One of the Following: EG340 or MAT730",
+                "21 Credits from General Education",
+                "", "", "", "", ""};
+            List<string> AirTrafMgmt = new List<string> { "MAT240", "PSY108", "AM205", "AV201", "AV490", "ACC105",
+                "AM201", "INT105", "MKT105", "QSO205", "OL215", "OL318", "SB100", "SB105", "AV205", "AV206",
+                "AM220", "AV306", "AV410", "AV491", "AT110", "AT210", "AT210L", "AT310", "AT315", "AT315L", "AT410",
+                "AT410L", "AT415", "AT415L", "AM340", "AM340L",
+                "27 Credits from General Education",
+                "12 Credits as Free Electives",
+                "", "", "", "", "", ""};
+            List<string> AviationMgmt = new List<string> { "MAT240", "PSY108", "AM205", "AV201", "AV490", "ACC105",
+                "AM201", "INT105", "MKT105", "QSO205", "OL215", "OL318", "SB100", "SB105", "AV205", "AV206", "AM220",
+                "AV300", "AV306", "AV410", "AV491", "AM215", "AV314", "AM320", "AM330", "AM340", "AM460", "AM404",
+                "QSO340", "QSO345", "ACC202", "ACC215", "ACC307",
+                "27 Additional Credits from General Education",
+                "9 Credits from Major Electives or Concentration",
+                "18 Credits as Free Electives",
+                "", "", "", ""};
+            List<string> AviationOpMgmt = new List<string> {"FYS101", "PCC201", "PSY108", "AV442", "PHY101", "AV201",
+                "AV490", "ACC105", "AM201", "INT105", "MKT105", "QSO205", "OL215", "OL318", "SB100", "SB105", "AT110",
+                "AV220", "AV306", "AV401", "AV410", "AV491", "PLT101", "PLT102", "PLT103", "PLT104", "PLT105", "AV207",
+                "PLT202", "PLT203", "PLT205", "PLT305", "PLT405",
+                "One of the following: MAT140 or MAT225",
+                "18 Additional Credits from General Education",
+                "9 Credits as Free Electives",
+                "", "", "", ""};
+            List<string> CompSci = new List<string> { "MAT225", "CS203", "CS204", "MAT275", "PHY215", "MAT350", "CS113",
+                "CS113L", "CS114", "CS114L", "CS217", "CS218", "CS219", "CS238", "CS303", "CS304", "CS312", "CS317",
+                "CS321", "CS361", "MAT230", "MAT235", "PHY215L", "CS413", "CS414", "CS490", "CS231", "CS328", "CS331",
+                "CS407", "CS411", "CS425", "EG424", "EG426",
+                "15 Credits as Free Electives",
+                "", "", "", "", ""};
+            List<string> ConstMgmt = new List<string> { "MAT225", "CM400", "FAS260", "PSY108", "CHM101", "MAT240",
+                "CM498", "ACC105", "CM380", "INT105", "MKT105", "QSO205", "OL215", "OL318", "SB100", "SB105", "CM100",
+                "CM115", "CM120", "CM200", "CM230", "CM250", "CM275", "CM280", "CM320", "CM370", "CM375", "CM390",
+                "CM410", "CM415", "CM485", "EG202", "PHY215", "PHY215L",
+                "21 Additional Credits from General Education",
+                "9 Credits as Free Electives",
+                "", "", "", ""};
+            List<string> ElecAndCompEng = new List<string> { "MAT225", "EG110", "EG498", "CHM120", "PHY215",
+                "MAT275", "EG499", "CS113", "CS113L", "CS114", "CS114L", "CS219", "EE201", "EE220", "EE301",
+                "EE301L", "EE318", "EE318L", "EE301", "EE301L", "EE330", "EE330L", "EG200", "EG207", "EG208",
+                "EG310", "EG316", "EG333", "EG340", "MAT325", "MAT330", "MAT350", "CHM120L", "PHY215L","PHY216",
+                "PHY216L", "One of the Following:  CS317 & CS328 or EE310 & EE304",
+                "21 Additional Credits from General Education",
+                "9 Credits from Major Electives or Concentration",
+                "6 Credits as Free Electives"};
+            List<string> ElecEng = new List<string> {"MAT225", "EG498", "EG110", "CHM120", "PHY215", "MAT275",
+                "EG499", "CS113", "CS113L", "CS114", "CS114L", "CS219", "EE201", "EE220", "EE310", "EE318",
+                "EE318L", "EE301", "EE301L", "EE330", "EE330L", "EE305", "EE306", "EG207", "EG310", "EG316",
+                "EG333", "EG340", "MAT325", "MAT330", "MAT350", "PHY216", "PHY216L", "CHM120L", "PHY215L",
+                "21 Additional Credits from General Education",
+                "9 Credits from Major Electives or Concentration",
+                "6 Credits as Free Electives",
+                "", ""};
+            List<string> IT = new List<string> { "ECO201", "PHY101", "MAT225", "CS110", "CS231", "CS238", "IT145",
+                "IT200", "IT201", "IT221", "IT315", "QSO340", "SOC335", "IT340", "IT361", "IT380", "IT385",
+                "IT412", "OL125", "MAT241", "IT490",
+                "36 Additional Credits from General Education",
+                "12 Credits from IT CS or CIS within course number range 300-499",
+                "9 Credits as Free Electives",
+                "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+            List<string> MechEng = new List<string> { "MAT225", "EG110", "EG498", "CHM120", "PHY215", "MAT275",
+                "EG499", "EG112", "EG201", "EG202", "EG203", "EG209", "EG325", "EG341", "EG410", "EG200",
+                "EG207", "EG208", "EG310", "EG316", "EG333", "MAT325", "MAT330", "MAT350", "PHY216", "PHY216L",
+                "CHM120L", "PHY215L", "Two of the following: EG318, EG350, EG420",
+                "One of the following: EG340 or MAT370",
+                "21 Additional Credits from General Education",
+                "Choose Concentration or 9 Credits from EG within course number range 300-499",
+                "6 Credits as Free Electives",
+                "", "", "", "", "", "", ""};
 
+            //assign degrees to array
             DegreeDatabase[0] = AeroEng;
             DegreeDatabase[1] = AirTrafMgmt;
             DegreeDatabase[2] = AviationMgmt;
             DegreeDatabase[3] = AviationOpMgmt;
             DegreeDatabase[4] = CompSci;
             DegreeDatabase[5] = ConstMgmt;
-            DegreeDatabase[6] = ConstSci;
-            DegreeDatabase[7] = ElecAndCompEng;
-            DegreeDatabase[8] = ElecEng;
-            DegreeDatabase[9] = IT;
-            DegreeDatabase[10] = MechEng;
+            DegreeDatabase[6] = ElecAndCompEng;
+            DegreeDatabase[7] = ElecEng;
+            DegreeDatabase[8] = IT;
+            DegreeDatabase[9] = MechEng;
 
-            List<string> DegreeList = new List<string> { "Aeronautical Engineering","Air Traffic Management","Aviation Management",
-                "Aviation and Operations Management","Computer Science","Construction Management","Construction Science",
-                "Electrical and Computer Engineering","Electrical Engineering","Information Technologies","Mechanical Engineering"};
+            //copy full degrees to missing classes array
+            MissingClassesTowardsDegree = DegreeDatabase;
 
-            //adds additional entry to lists to make each list the same size, helps with looping for matching classes later
-            do
-            {
-                for (int i = 0; i < DegreeDatabase.Count(); ++i)
-                {
-                    for (int j = 1; j < DegreeDatabase.Count(); ++j)
-                    {
-                        if (DegreeDatabase[i].Count() < DegreeDatabase[j].Count())
-                        {
-                            DegreeDatabase[i].Add($"added entry");
-                        }
-                        else
-                        {
-                            continue;
-                        }
-                    }
-                }
-            } while (DegreeDatabase[0].Count() != DegreeDatabase[1].Count());
-
-            //  ***This loop checks that all the degrees have the same number of 
-            //  ***classes after the loop above adds additional entries to make them even
-            //
-            //for (int i = 0; i < DegreeDatabase[0].Count(); ++i)
+            //used to determine count of classes for each degree to aid in making them all equal length for easy looping
+            //for (int i = 0; i < DegreeDatabase.Count() - 1; ++i)
             //{
-            //    if (i == DegreeDatabase.Count())
-            //    {
-            //        break;
-            //    }
-            //    Console.WriteLine(DegreeDatabase[i].Count());
+            //    MessageBox.Show(DegreeDatabase[i].Count().ToString());    
             //}
-            //Console.ReadLine();
 
-
-
-            for (int i = 0; i < DegreeDatabase.Count(); ++i)
+            //loops add classes to array of classes towards degree and remove classes from the missing class array
+            for (int i = 0; i < DegreeDatabase.Count() - 1; ++i)
             {
-                for (int j = 0; j < Data.Count(); ++j)
+                for (int j = 0; j < Data.Count() - 1; ++j)
                 {
-                    for (int k = 0; k < AeroEng.Count(); ++k)
+                    for (int k = 0; k < AeroEng.Count() - 1; ++k)
                     {
-                        if (Data.ElementAt(j).Split().ElementAt(0) == DegreeDatabase[i].ElementAt(k).Split().ElementAt(0))
+                        if (Data.ElementAt(j).Split().ElementAt(0) == DegreeDatabase[i].ElementAt(k))
                         {
-                            EmptyDegreeDatabase[i].Add(Data.ElementAt(j));
+                            HaveClassesTowardsDegree[i].Add(Data.ElementAt(j));
+                            MissingClassesTowardsDegree[i].ElementAt(k).Equals("added entry"); //replaces class with "added entry" to avoid null exception
                         }
                     }
                 }
             }
 
-            for (int i = 0; i < EmptyDegreeDatabase.Count(); ++i)
+            //ATTEMPT to sort classes alphabetically, not sure if this is working but I think it is
+            for (int i = 0; i < HaveClassesTowardsDegree.Count() - 1; ++i)
             {
-                EmptyDegreeDatabase[i].Sort();
-            }
-            for (int i = 0; i < EmptyDegreeDatabase.Count(); ++i)
-            {
-                MessageBox.Show($"Classes towards {DegreeList.ElementAt(i)}: \n\n{string.Join(Environment.NewLine, EmptyDegreeDatabase[i])}");
+                HaveClassesTowardsDegree[i].Sort();
+                MissingClassesTowardsDegree[i].Sort();
             }
 
+            //display classes that user checked that are applicable to each degree
+            for (int i = 0; i < HaveClassesTowardsDegree.Count() - 1; ++i)
+            {
+                MessageBox.Show($"Classes towards {DegreeList.ElementAt(i)}: \n\n{string.Join(Environment.NewLine, HaveClassesTowardsDegree[i])}");
+            }
+
+            //display classes for each degree that user still needs to take in order to finish degree
+            for (int i = 0; i < MissingClassesTowardsDegree.Count() - 1; ++i)
+            {
+                MessageBox.Show($"Classes missing for {DegreeList.ElementAt(i)}: \n\n{string.Join(Environment.NewLine, MissingClassesTowardsDegree[i])}");
+            }
+
+
+            //The following is the FIRST ATTEMPT to display only the top three degrees that the user is closest
+            //to and the classes they have left to complete for that degree. Did not work last run
+
+            //Array.Sort(MissingClassesTowardsDegree);
+            //Array.Reverse(MissingClassesTowardsDegree);
+            //for (int i = 0; i < 3; ++i)
+            //{
+            //    MessageBox.Show($"Classes missing for {DegreeList.ElementAt(i)}: \n\n{string.Join(Environment.NewLine, MissingClassesTowardsDegree[i])}");
+            //}
         }
     }
 }
