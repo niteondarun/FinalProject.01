@@ -1,0 +1,10 @@
+C:\Users\codyp\OneDrive - SNHU\SE PROJECT FOLDER\Final SE Group Project\bin\Debug\Final SE Group Project.exe.config
+C:\Users\codyp\OneDrive - SNHU\SE PROJECT FOLDER\Final SE Group Project\bin\Debug\Final SE Group Project.exe
+C:\Users\codyp\OneDrive - SNHU\SE PROJECT FOLDER\Final SE Group Project\bin\Debug\Final SE Group Project.pdb
+C:\Users\codyp\OneDrive - SNHU\SE PROJECT FOLDER\Final SE Group Project\obj\Debug\Final SE Group Project.csprojAssemblyReference.cache
+C:\Users\codyp\OneDrive - SNHU\SE PROJECT FOLDER\Final SE Group Project\obj\Debug\Final_SE_Group_Project.Form1.resources
+C:\Users\codyp\OneDrive - SNHU\SE PROJECT FOLDER\Final SE Group Project\obj\Debug\Final_SE_Group_Project.Form2.resources
+C:\Users\codyp\OneDrive - SNHU\SE PROJECT FOLDER\Final SE Group Project\obj\Debug\Final_SE_Group_Project.Properties.Resources.resources
+C:\Users\codyp\OneDrive - SNHU\SE PROJECT FOLDER\Final SE Group Project\obj\Debug\Final SE Group Project.csproj.GenerateResource.cache
+C:\Users\codyp\OneDrive - SNHU\SE PROJECT FOLDER\Final SE Group Project\obj\Debug\Final SE Group Project.exe
+C:\Users\codyp\OneDrive - SNHU\SE PROJECT FOLDER\Final SE Group Project\obj\Debug\Final SE Group Project.pdb
