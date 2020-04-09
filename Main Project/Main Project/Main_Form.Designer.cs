@@ -32,7 +32,8 @@
             this.Texts = new System.Windows.Forms.Label();
             this.Welcome = new System.Windows.Forms.Label();
             this.Match = new System.Windows.Forms.Button();
-            this.AuthorBlock = new System.Windows.Forms.Label();
+            this.DegreeRemoval = new System.Windows.Forms.Label();
+            this.DegreeRemover = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // ClassOptions
@@ -48,6 +49,7 @@
             "AM320 - Air Carrier Operation",
             "AM330 - Business & Corporate Aviation",
             "AM340 - Airport and Airspace Capacity Management",
+            "AM340L - Airport and Airspace Capacity Management",
             "AM404 - Studies/International Aerospace",
             "AM460 - Airport Planning and Management",
             "AT110 - Fundamentals of Air Traffic Control",
@@ -72,7 +74,7 @@
             "AV401 - Aerodynamics and Aircraft Performance",
             "AV410 - Aviation Safety",
             "AV442 - Aviation Economics and Policy",
-            "AV490 - Aviation Internship I",
+            "AV490 - Aviation Internship I ",
             "AV491 - Aviation Internship II",
             "CHM101 - Fundamentals of Chemistry",
             "CHM120 - General Chemistry I",
@@ -95,8 +97,7 @@
             "CM415 - Construction Planning and Scheduling",
             "CM485 - Construction Business and Finance",
             "CM498 - Senior Capstone Project",
-            "CS110 - Fundamentals of Programming ",
-            "CS113 - Introduction to Programming",
+            "CS110 - Fundamentals of Programming",
             "CS113 - Introduction to Programming",
             "CS113L - Intro to Programming Lab",
             "CS114 - Intro to Software Engineering",
@@ -107,7 +108,7 @@
             "CS218 - Data Structure and Algorithms",
             "CS219 - Computer Architecture I",
             "CS231 - Database Systems ",
-            "CS238 - UNIX Programming",
+            "CS238 - UNIX Programming ",
             "CS303 - Junior Software Engineering I",
             "CS304 - Junior Software Engineering II",
             "CS312 - Analysis of Algorithms",
@@ -172,6 +173,7 @@
             "EG426 - Mobile Robots",
             "EG428 - Robotics: Project-Based Applications",
             "EG450 - Conceptual Design of Unmanned Aerial Systems",
+            "EG49 - Capstone Design II",
             "EG498 - Capstone Design I",
             "EG499 - Capstone Design II",
             "FAS260 - History of Architecture",
@@ -226,9 +228,9 @@
             "SB100 - Integration & Application of Business I",
             "SB105 - Integration & Application of Business II ",
             "SOC335 - Technology and Society"});
-            this.ClassOptions.Location = new System.Drawing.Point(12, 141);
+            this.ClassOptions.Location = new System.Drawing.Point(17, 126);
             this.ClassOptions.Name = "ClassOptions";
-            this.ClassOptions.Size = new System.Drawing.Size(558, 361);
+            this.ClassOptions.Size = new System.Drawing.Size(479, 242);
             this.ClassOptions.Sorted = true;
             this.ClassOptions.TabIndex = 0;
             this.ClassOptions.SelectedIndexChanged += new System.EventHandler(this.ClassOptions_SelectedIndexChanged);
@@ -237,7 +239,7 @@
             // 
             this.Texts.AutoSize = true;
             this.Texts.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Texts.Location = new System.Drawing.Point(15, 100);
+            this.Texts.Location = new System.Drawing.Point(12, 79);
             this.Texts.Name = "Texts";
             this.Texts.Size = new System.Drawing.Size(566, 27);
             this.Texts.TabIndex = 1;
@@ -248,7 +250,7 @@
             // 
             this.Welcome.AutoSize = true;
             this.Welcome.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Welcome.Location = new System.Drawing.Point(12, 9);
+            this.Welcome.Location = new System.Drawing.Point(366, 9);
             this.Welcome.Name = "Welcome";
             this.Welcome.Size = new System.Drawing.Size(500, 45);
             this.Welcome.TabIndex = 2;
@@ -256,7 +258,7 @@
             // 
             // Match
             // 
-            this.Match.Location = new System.Drawing.Point(763, 433);
+            this.Match.Location = new System.Drawing.Point(537, 417);
             this.Match.Name = "Match";
             this.Match.Size = new System.Drawing.Size(142, 69);
             this.Match.TabIndex = 3;
@@ -264,16 +266,36 @@
             this.Match.UseVisualStyleBackColor = true;
             this.Match.Click += new System.EventHandler(this.Match_Click);
             // 
-            // AuthorBlock
+            // DegreeRemoval
             // 
-            this.AuthorBlock.AutoSize = true;
-            this.AuthorBlock.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AuthorBlock.Location = new System.Drawing.Point(518, 9);
-            this.AuthorBlock.Name = "AuthorBlock";
-            this.AuthorBlock.Size = new System.Drawing.Size(384, 64);
-            this.AuthorBlock.TabIndex = 4;
-            this.AuthorBlock.Text = "Program:  Degree Matcher\r\nPurpose: To allow students to see what degrees they are" +
-    " closest to\r\nAuthor:  Cody.P, Paul Wood, Tyler Scott\r\nDate: April 2,2020";
+            this.DegreeRemoval.AutoSize = true;
+            this.DegreeRemoval.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DegreeRemoval.Location = new System.Drawing.Point(726, 79);
+            this.DegreeRemoval.Name = "DegreeRemoval";
+            this.DegreeRemoval.Size = new System.Drawing.Size(394, 27);
+            this.DegreeRemoval.TabIndex = 4;
+            this.DegreeRemoval.Text = "Degree or degrees that You Didn\'t Want";
+            // 
+            // DegreeRemover
+            // 
+            this.DegreeRemover.CheckOnClick = true;
+            this.DegreeRemover.FormattingEnabled = true;
+            this.DegreeRemover.Items.AddRange(new object[] {
+            "Aeronautical Engineering",
+            "Air Traffic Management",
+            "Aviation and Operations Management",
+            "Aviation Management",
+            "Computer Science",
+            "Construction Management",
+            "Electrical and Computer Engineering",
+            "Electrical Engineering",
+            "Information Technologies",
+            "Mechanical Engineering"});
+            this.DegreeRemover.Location = new System.Drawing.Point(731, 126);
+            this.DegreeRemover.Name = "DegreeRemover";
+            this.DegreeRemover.Size = new System.Drawing.Size(411, 242);
+            this.DegreeRemover.Sorted = true;
+            this.DegreeRemover.TabIndex = 5;
             // 
             // Degree_Matcher
             // 
@@ -282,8 +304,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ClientSize = new System.Drawing.Size(917, 514);
-            this.Controls.Add(this.AuthorBlock);
+            this.ClientSize = new System.Drawing.Size(1196, 498);
+            this.Controls.Add(this.DegreeRemover);
+            this.Controls.Add(this.DegreeRemoval);
             this.Controls.Add(this.Match);
             this.Controls.Add(this.Welcome);
             this.Controls.Add(this.Texts);
@@ -301,7 +324,8 @@
         private System.Windows.Forms.Label Texts;
         private System.Windows.Forms.Label Welcome;
         private System.Windows.Forms.Button Match;
-        private System.Windows.Forms.Label AuthorBlock;
+        private System.Windows.Forms.Label DegreeRemoval;
+        private System.Windows.Forms.CheckedListBox DegreeRemover;
     }
 }
 

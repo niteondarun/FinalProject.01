@@ -1,7 +1,7 @@
 ﻿/***
 Program:  Degree Matcher
 Purpose: To allow students to see what 
-         degrees they are closest to
+        degrees they are closest to
 Author:  Cody.P, Paul Wood, Tyler Scott
 Date: April 2,2020
 
@@ -11,7 +11,7 @@ FIX ME: Aesthetics of first form
 CHECK ME: is it actually displaying correct information for both the completed classes and the missing classes
 ADD ME: 2nd form with nice top 3 closest to completion degree specific displays to open instead of message boxes
 ADD ME: Gen Ed List to display how many gen ed courses the student has completed and a more accurate credit count
-        that the user is missing in that category.
+       that the user is missing in that category.
 **/
 
 using System;
@@ -33,28 +33,39 @@ namespace Main_Project
         {
             InitializeComponent();
         }
+        public List<string> RemoveList()
+        {
+            List<String> removing = new List<String>();
+            for (int i = 0; i < DegreeRemover.Items.Count; i++)
+            {
+                //checks for all checked blocks
+                if ((DegreeRemover.GetItemChecked(i)))
+                {
+                    //This puts the selected checkbox strings into the list
+                    removing.Add(DegreeRemover.GetItemText(DegreeRemover.Items[i]));
+                }
+            }
 
-        private void ClassOptions_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
+            return removing;
         }
-        private void Texts_Click(object sender, EventArgs e)
+        public List<string> GetData()
         {
-
-        }
-        List<String> Data = new List<String>();
-        private void Match_Click(object sender, EventArgs e)
-        {
+            List<String> Data = new List<String>();
             //checks for all checked blocks
             for (int i = 0; i < ClassOptions.Items.Count; i++)
             {
-                
+
                 if (ClassOptions.GetItemChecked(i))
                 {
                     //This puts the selected checkbox strings into the list
                     Data.Add(ClassOptions.GetItemText(ClassOptions.Items[i]));
- }
+                }
             }
+            return Data;
+        }
+
+        public List<string> [] GetDegreeInfo()
+        {
             //loop to display all the ones that got seletced and put into the list.
             //for (int i = 0; i <= Data.Count - 1; i++)
             //{
@@ -195,13 +206,14 @@ namespace Main_Project
             //loops add classes to array of classes towards degree and remove classes from the missing class array
             for (int i = 0; i < DegreeDatabase.Count() - 1; ++i)
             {
-                for (int j = 0; j < Data.Count() - 1; ++j)
+                List<string> Classes = GetData();
+                for (int j = 0; j < Classes.Count() - 1; ++j)
                 {
                     for (int k = 0; k < AeroEng.Count() - 1; ++k)
                     {
-                        if (Data.ElementAt(j).Split().ElementAt(0) == DegreeDatabase[i].ElementAt(k))
+                        if (Classes.ElementAt(j).Split().ElementAt(0) == DegreeDatabase[i].ElementAt(k))
                         {
-                            HaveClassesTowardsDegree[i].Add(Data.ElementAt(j));
+                            HaveClassesTowardsDegree[i].Add(Classes.ElementAt(j));
                             MissingClassesTowardsDegree[i].ElementAt(k).Equals("added entry"); //replaces class with "added entry" to avoid null exception
                         }
                     }
@@ -215,18 +227,19 @@ namespace Main_Project
                 MissingClassesTowardsDegree[i].Sort();
             }
 
-            //display classes that user checked that are applicable to each degree
-            for (int i = 0; i < HaveClassesTowardsDegree.Count() - 1; ++i)
-            {
-                MessageBox.Show($"Classes towards {DegreeList.ElementAt(i)}: \n\n{string.Join(Environment.NewLine, HaveClassesTowardsDegree[i])}");
-            }
+            /*  //display classes that user checked that are applicable to each degree
+              for (int i = 0; i < HaveClassesTowardsDegree.Count() - 1; ++i)
+              {
+                  MessageBox.Show($"Classes towards {DegreeList.ElementAt(i)}: \n\n{string.Join(Environment.NewLine, HaveClassesTowardsDegree[i])}");
+              }
 
-            //display classes for each degree that user still needs to take in order to finish degree
-            for (int i = 0; i < MissingClassesTowardsDegree.Count() - 1; ++i)
-            {
-                MessageBox.Show($"Classes missing for {DegreeList.ElementAt(i)}: \n\n{string.Join(Environment.NewLine, MissingClassesTowardsDegree[i])}");
-            }
+              //display classes for each degree that user still needs to take in order to finish degree
+              for (int i = 0; i < MissingClassesTowardsDegree.Count() - 1; ++i)
+              {
+                  MessageBox.Show($"Classes missing for {DegreeList.ElementAt(i)}: \n\n{string.Join(Environment.NewLine, MissingClassesTowardsDegree[i])}");
 
+              }
+  */
 
             //The following is the FIRST ATTEMPT to display only the top three degrees that the user is closest
             //to and the classes they have left to complete for that degree. Did not work last run
@@ -237,6 +250,40 @@ namespace Main_Project
             //{
             //    MessageBox.Show($"Classes missing for {DegreeList.ElementAt(i)}: \n\n{string.Join(Environment.NewLine, MissingClassesTowardsDegree[i])}");
             //}
+            return MissingClassesTowardsDegree;
+        }
+
+        private void ClassOptions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Texts_Click(object sender, EventArgs e)
+        {
+
+        }        
+        private void Match_Click(object sender, EventArgs e)
+        {
+            GetDegreeInfo();
+            RemoveDegree();
+            GetData();
+            DisplayDegree f1 = new DisplayDegree();
+            f1.Show(this);
+          
+        }
+       public List<string> RemoveDegree()
+        {
+            List<string> ListofDegree = new List<string>{ "Aeronautical Engineering","Air Traffic Management",
+                "Aviation Management", "Aviation and Operations Management","Computer Science",
+                "Construction Management", "Electrical and Computer Engineering","Electrical Engineering",
+                "Information Technologies","Mechanical Engineering"};
+            List<string> removing = RemoveList();
+            for (int i = 0; i <= removing.Count - 1; i++)
+            {
+                ListofDegree.Remove(removing[i]);
+
+            }
+            return ListofDegree;
         }
     }
 }
