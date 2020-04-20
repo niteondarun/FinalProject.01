@@ -91,19 +91,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Aero.png" />
+    <None Include="Resources\SNHU.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\Resources\Aeronautical Engineering.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Resources\Air Traffic Controller.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Resources\Aviation Management.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Resources\Aviation Management.png" />
+    <None Include="Properties\Resources\SNHU Image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

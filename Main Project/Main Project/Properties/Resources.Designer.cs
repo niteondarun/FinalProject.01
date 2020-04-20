@@ -61,31 +61,21 @@ namespace Main_Project.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Bitmap aeronautical_Engineering {
+        internal static System.Drawing.Icon SNHU {
             get {
-                object obj = ResourceManager.GetObject("aeronautical_Engineering", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("SNHU", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap air_Traffic_Management {
+        internal static System.Drawing.Bitmap SNHU_Image {
             get {
-                object obj = ResourceManager.GetObject("air_Traffic_Management", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap aviation_Management {
-            get {
-                object obj = ResourceManager.GetObject("aviation_Management", resourceCulture);
+                object obj = ResourceManager.GetObject("SNHU_Image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
