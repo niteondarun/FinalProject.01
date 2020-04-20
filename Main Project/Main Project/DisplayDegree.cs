@@ -82,12 +82,175 @@ namespace Main_Project
                     }
                 }
             }
+            //************************************************************************************************
+            //************************************************************************************************
+            //used to determine which degrees the user is closest to
+            int[] NumberOfClassesLeft = new int[NeededClasses.Count()]; ;
 
+            if (FinalDegrees.Contains("Aeronautical Engineering"))
+            {
+                NumberOfClassesLeft[0] = NeededClasses[0].Count();
+            }
+            else
+            {
+                NumberOfClassesLeft[0] = 100;
+            }
+            if (FinalDegrees.Contains("Air Traffic Management"))
+            {
+                NumberOfClassesLeft[1] = NeededClasses[1].Count();
+            }
+            else
+            {
+                NumberOfClassesLeft[1] = 100;
+            }
+            if (FinalDegrees.Contains("Aviation Management"))
+            {
+                NumberOfClassesLeft[2] = NeededClasses[2].Count();
+            }
+            else
+            {
+                NumberOfClassesLeft[2] = 100;
+            }
+            if (FinalDegrees.Contains("Aviation and Operations Management"))
+            {
+                NumberOfClassesLeft[3] = NeededClasses[3].Count();
+            }
+            else
+            {
+                NumberOfClassesLeft[3] = 100;
+            }
+            if (FinalDegrees.Contains("Biology"))
+            {
+                NumberOfClassesLeft[4] = NeededClasses[4].Count();
+            }
+            else
+            {
+                NumberOfClassesLeft[4] = 100;
+            }
+            if (FinalDegrees.Contains("Communication"))
+            {
+                NumberOfClassesLeft[5] = NeededClasses[5].Count();
+            }
+            else
+            {
+                NumberOfClassesLeft[5] = 100;
+            }
+            if (FinalDegrees.Contains("Computer Science"))
+            {
+                NumberOfClassesLeft[6] = NeededClasses[6].Count();
+            }
+            else
+            {
+                NumberOfClassesLeft[6] = 100;
+            }
+            if (FinalDegrees.Contains("Construction Management"))
+            {
+                NumberOfClassesLeft[7] = NeededClasses[7].Count();
+            }
+            else
+            {
+                NumberOfClassesLeft[7] = 100;
+            }
+            if (FinalDegrees.Contains("Electrical and Computer Engineering"))
+            {
+                NumberOfClassesLeft[8] = NeededClasses[8].Count();
+            }
+            else
+            {
+                NumberOfClassesLeft[8] = 100;
+            }
+            if (FinalDegrees.Contains("Electrical Engineering"))
+            {
+                NumberOfClassesLeft[9] = NeededClasses[9].Count();
+            }
+            else
+            {
+                NumberOfClassesLeft[9] = 100;
+            }
+            if (FinalDegrees.Contains("Environmental Science"))
+            {
+                NumberOfClassesLeft[10] = NeededClasses[10].Count();
+            }
+            else
+            {
+                NumberOfClassesLeft[10] = 100;
+            }
+            if (FinalDegrees.Contains("Game Art and Development"))
+            {
+                NumberOfClassesLeft[11] = NeededClasses[11].Count();
+            }
+            else
+            {
+                NumberOfClassesLeft[11] = 100;
+            }
+            if (FinalDegrees.Contains("Game Programming and Development"))
+            {
+                NumberOfClassesLeft[12] = NeededClasses[12].Count();
+            }
+            else
+            {
+                NumberOfClassesLeft[12] = 100;
+            }
+            if (FinalDegrees.Contains("Graphic Design and Media Arts"))
+            {
+                NumberOfClassesLeft[13] = NeededClasses[13].Count();
+            }
+            else
+            {
+                NumberOfClassesLeft[13] = 100;
+            }
+            if (FinalDegrees.Contains("Information Technologies"))
+            {
+                NumberOfClassesLeft[14] = NeededClasses[14].Count();
+            }
+            else
+            {
+                NumberOfClassesLeft[14] = 100;
+            }
+            if (FinalDegrees.Contains("Mechanical Engineering"))
+            {
+                NumberOfClassesLeft[15] = NeededClasses[15].Count();
+            }
+            else
+            {
+                NumberOfClassesLeft[15] = 100;
+            }
 
-        // Displays the information of the top three degrees
-        Degree1.Text = FinalDegrees[0];
-            Degree2.Text = FinalDegrees[1];
-            Degree3.Text = FinalDegrees[2];
+            List<int> classCount = new List<int>();
+            foreach (var item in NumberOfClassesLeft)
+            {
+                if (item != 100)
+                {
+                    classCount.Add(item);
+                }
+            }
+
+            MessageBox.Show($"{string.Join(Environment.NewLine, NumberOfClassesLeft)}");
+            MessageBox.Show($"{string.Join(Environment.NewLine, classCount)}");
+
+            //displays top three degrees user is closest to finishing
+            int minIndex = classCount.IndexOf(classCount.Min());
+            Degree1.Text = FinalDegrees[minIndex];
+            classCount[minIndex] = 100;
+            MessageBox.Show($"{string.Join(Environment.NewLine, classCount)}");
+
+            if (FinalDegrees.Count() > 1)
+            {
+                int secondMinIndex = classCount.IndexOf(classCount.Min());
+                Degree2.Text = FinalDegrees[secondMinIndex];
+                classCount[secondMinIndex] = 100;
+            }
+            MessageBox.Show($"{string.Join(Environment.NewLine, classCount)}");
+
+            if (FinalDegrees.Count() > 2)
+            {
+                int thirdMinIndex = classCount.IndexOf(classCount.Min());
+                Degree3.Text = FinalDegrees[thirdMinIndex];
+            }
+            MessageBox.Show($"{string.Join(Environment.NewLine, classCount)}");
+
+            //************************************************************************************************
+            //************************************************************************************************
 
             //these are to display the information with the degree depending on what one it ends up being on
             if (Degree1.Text == "Aeronautical Engineering")
@@ -200,273 +363,112 @@ namespace Main_Project
 
             if (Degree1.Text == "Computer Science")
             {
-                for (int i = 0; i <= NeededClasses.ElementAt(4).Count - 1; i++)
+                for (int i = 0; i <= NeededClasses.ElementAt(6).Count - 1; i++)
                 {
-                    Degree1Txt.Items.Add(NeededClasses.ElementAt(4).ElementAt(i));
+                    Degree1Txt.Items.Add(NeededClasses.ElementAt(6).ElementAt(i));
                 }
                // DegreeOne.BackgroundImage = Properties.Resources.computer_Science;
             }
 
             if (Degree2.Text == "Computer Science")
             {
-                for (int i = 0; i <= NeededClasses.ElementAt(4).Count - 1; i++)
+                for (int i = 0; i <= NeededClasses.ElementAt(6).Count - 1; i++)
                 {
-                    Degree2Txt.Items.Add(NeededClasses.ElementAt(4).ElementAt(i));                    
+                    Degree2Txt.Items.Add(NeededClasses.ElementAt(6).ElementAt(i));                    
                 }
                 //DegreeTwo.BackgroundImage = Properties.Resources.computer_Science;
             }
 
             if (Degree3.Text == "Computer Science")
             {
-                for (int i = 0; i <= NeededClasses.ElementAt(4).Count - 1; i++)
+                for (int i = 0; i <= NeededClasses.ElementAt(6).Count - 1; i++)
                 {
-                    Degree3Txt.Items.Add(NeededClasses.ElementAt(4).ElementAt(i));                    
+                    Degree3Txt.Items.Add(NeededClasses.ElementAt(6).ElementAt(i));                    
                 }
                // DegreeThree.BackgroundImage = Properties.Resources.computer_Science;
             }
 
             if (Degree1.Text == "Construction Management")
             {
-                for (int i = 0; i <= NeededClasses.ElementAt(5).Count - 1; i++)
+                for (int i = 0; i <= NeededClasses.ElementAt(7).Count - 1; i++)
                 {
-                    Degree1Txt.Items.Add(NeededClasses.ElementAt(5).ElementAt(i));
+                    Degree1Txt.Items.Add(NeededClasses.ElementAt(7).ElementAt(i));
                 }
                 //DegreeOne.BackgroundImage = Properties.Resources.construction_Management;
             }
 
             if (Degree2.Text == "Construction Management")
             {
-                for (int i = 0; i <= NeededClasses.ElementAt(5).Count - 1; i++)
+                for (int i = 0; i <= NeededClasses.ElementAt(7).Count - 1; i++)
                 {
-                    Degree2Txt.Items.Add(NeededClasses.ElementAt(5).ElementAt(i));
+                    Degree2Txt.Items.Add(NeededClasses.ElementAt(7).ElementAt(i));
                 }
                 //DegreeTwo.BackgroundImage = Properties.Resources.construction_Management;
             }
 
             if (Degree3.Text == "Construction Management")
             {
-                for (int i = 0; i <= NeededClasses.ElementAt(5).Count - 1; i++)
+                for (int i = 0; i <= NeededClasses.ElementAt(7).Count - 1; i++)
                 {
-                    Degree3Txt.Items.Add(NeededClasses.ElementAt(5).ElementAt(i));                    
+                    Degree3Txt.Items.Add(NeededClasses.ElementAt(7).ElementAt(i));                    
                 }
                // DegreeThree.BackgroundImage = Properties.Resources.construction_Management;
             }
 
             if (Degree1.Text == "Electrical and Computer Engineering")
             {
-                for (int i = 0; i <= NeededClasses.ElementAt(6).Count - 1; i++)
+                for (int i = 0; i <= NeededClasses.ElementAt(8).Count - 1; i++)
                 {
-                    Degree1Txt.Items.Add(NeededClasses.ElementAt(6).ElementAt(i));
+                    Degree1Txt.Items.Add(NeededClasses.ElementAt(8).ElementAt(i));
                 }
                 //DegreeOne.BackgroundImage = Properties.Resources.aviation_Management;
             }
 
             if (Degree2.Text == "Electrical and Computer Engineering")
             {
-                for (int i = 0; i <= NeededClasses.ElementAt(6).Count - 1; i++)
+                for (int i = 0; i <= NeededClasses.ElementAt(8).Count - 1; i++)
                 {
-                    Degree2Txt.Items.Add(NeededClasses.ElementAt(6).ElementAt(i));
+                    Degree2Txt.Items.Add(NeededClasses.ElementAt(8).ElementAt(i));
                 }
                 //DegreeTwo.BackgroundImage = Properties.Resources.aviation_Management;
             }
 
             if (Degree3.Text == "Electrical and Computer Engineering")
             {
-                for (int i = 0; i <= NeededClasses.ElementAt(6).Count - 1; i++)
+                for (int i = 0; i <= NeededClasses.ElementAt(8).Count - 1; i++)
                 {
-                    Degree3Txt.Items.Add(NeededClasses.ElementAt(6).ElementAt(i));
+                    Degree3Txt.Items.Add(NeededClasses.ElementAt(8).ElementAt(i));
                 }
                 //DegreeThree.BackgroundImage = Properties.Resources.aviation_Management;
             }
 
             if (Degree1.Text == "Electrical Engineering")
             {
-                for (int i = 0; i <= NeededClasses.ElementAt(7).Count - 1; i++)
+                for (int i = 0; i <= NeededClasses.ElementAt(9).Count - 1; i++)
                 {
-                    Degree1Txt.Items.Add(NeededClasses.ElementAt(7).ElementAt(i));
+                    Degree1Txt.Items.Add(NeededClasses.ElementAt(9).ElementAt(i));
                 }
 
             }
 
             if (Degree2.Text == "Electrical Engineering")
             {
-                for (int i = 0; i <= NeededClasses.ElementAt(7).Count - 1; i++)
+                for (int i = 0; i <= NeededClasses.ElementAt(9).Count - 1; i++)
                 {
-                    Degree2Txt.Items.Add(NeededClasses.ElementAt(7).ElementAt(i));
+                    Degree2Txt.Items.Add(NeededClasses.ElementAt(9).ElementAt(i));
                 }
 
             }
 
             if (Degree3.Text == "Electrical Engineering")
             {
-                for (int i = 0; i <= NeededClasses.ElementAt(7).Count - 1; i++)
+                for (int i = 0; i <= NeededClasses.ElementAt(9).Count - 1; i++)
                 {
-                    Degree3Txt.Items.Add(NeededClasses.ElementAt(7).ElementAt(i));
+                    Degree3Txt.Items.Add(NeededClasses.ElementAt(9).ElementAt(i));
                 }
             }
 
             if (Degree1.Text == "Information Technologies")
-                {
-                    for (int i = 0; i <= NeededClasses.ElementAt(8).Count - 1; i++)
-                    {
-                        Degree1Txt.Items.Add(NeededClasses.ElementAt(8).ElementAt(i));
-                    }
-
-                }
-
-                if (Degree2.Text == "Information Technologies")
-                {
-                    for (int i = 0; i <= NeededClasses.ElementAt(8).Count - 1; i++)
-                    {
-                        Degree2Txt.Items.Add(NeededClasses.ElementAt(8).ElementAt(i));
-                    }
-
-                }
-
-                if (Degree3.Text == "Information Technologies")
-                {
-                    for (int i = 0; i <= NeededClasses.ElementAt(8).Count - 1; i++)
-                    {
-                        Degree3Txt.Items.Add(NeededClasses.ElementAt(8).ElementAt(i));
-                    }
-                }
-
-                    if (Degree1.Text == "Mechanical Engineering")
-                    {
-                        for (int i = 0; i <= NeededClasses.ElementAt(9).Count - 1; i++)
-                        {
-                            Degree1Txt.Items.Add(NeededClasses.ElementAt(9).ElementAt(i));
-                        }
-
-                    }
-
-                    if (Degree2.Text == "Mechanical Engineering")
-                    {
-                        for (int i = 0; i <= NeededClasses.ElementAt(9).Count - 1; i++)
-                        {
-                            Degree2Txt.Items.Add(NeededClasses.ElementAt(9).ElementAt(i));
-                        }
-
-                    }
-
-                    if (Degree3.Text == "Mechanical Engineering")
-                    {
-                        for (int i = 0; i <= NeededClasses.ElementAt(9).Count - 1; i++)
-                        {
-                            Degree3Txt.Items.Add(NeededClasses.ElementAt(9).ElementAt(i));
-                        }
-
-                    }
-
-                if (Degree1.Text == "Biology")
-                {
-                    for (int i = 0; i <= NeededClasses.ElementAt(10).Count - 1; i++)
-                    {
-                        Degree1Txt.Items.Add(NeededClasses.ElementAt(10).ElementAt(i));
-                    }
-
-                }
-
-                if (Degree2.Text == "Biology")
-                {
-                    for (int i = 0; i <= NeededClasses.ElementAt(10).Count - 1; i++)
-                    {
-                        Degree2Txt.Items.Add(NeededClasses.ElementAt(10).ElementAt(i));
-                    }
-
-                }
-
-                if (Degree3.Text == "Biology")
-                {
-                    for (int i = 0; i <= NeededClasses.ElementAt(10).Count - 1; i++)
-                    {
-                        Degree3Txt.Items.Add(NeededClasses.ElementAt(10).ElementAt(i));
-                    }
-
-                }
-
-                if (Degree1.Text == "Environmental Science")
-                {
-                    for (int i = 0; i <= NeededClasses.ElementAt(11).Count - 1; i++)
-                    {
-                        Degree1Txt.Items.Add(NeededClasses.ElementAt(11).ElementAt(i));
-                    }
-
-                }
-
-                if (Degree2.Text == "Environmental Science")
-                {
-                    for (int i = 0; i <= NeededClasses.ElementAt(11).Count - 1; i++)
-                    {
-                        Degree2Txt.Items.Add(NeededClasses.ElementAt(11).ElementAt(i));
-                    }
-
-                }
-
-                if (Degree3.Text == "Environmental Science")
-                {
-                    for (int i = 0; i <= NeededClasses.ElementAt(11).Count - 1; i++)
-                    {
-                        Degree3Txt.Items.Add(NeededClasses.ElementAt(11).ElementAt(i));
-                    }
-
-                }
-
-                if (Degree1.Text == "Game Art and Development")
-                {
-                    for (int i = 0; i <= NeededClasses.ElementAt(12).Count - 1; i++)
-                    {
-                        Degree1Txt.Items.Add(NeededClasses.ElementAt(12).ElementAt(i));
-                    }
-
-                }
-
-                if (Degree2.Text == "Game Art and Development")
-                {
-                    for (int i = 0; i <= NeededClasses.ElementAt(12).Count - 1; i++)
-                    {
-                        Degree2Txt.Items.Add(NeededClasses.ElementAt(12).ElementAt(i));
-                    }
-
-                }
-
-                if (Degree3.Text == "Game Art and Development")
-                {
-                    for (int i = 0; i <= NeededClasses.ElementAt(12).Count - 1; i++)
-                    {
-                        Degree3Txt.Items.Add(NeededClasses.ElementAt(12).ElementAt(i));
-                    }
-
-                }
-
-                if (Degree1.Text == "Game Programming and Development")
-                {
-                    for (int i = 0; i <= NeededClasses.ElementAt(13).Count - 1; i++)
-                    {
-                        Degree1Txt.Items.Add(NeededClasses.ElementAt(13).ElementAt(i));
-                    }
-
-                }
-
-                if (Degree2.Text == "Game Programming and Development")
-                {
-                    for (int i = 0; i <= NeededClasses.ElementAt(13).Count - 1; i++)
-                    {
-                        Degree2Txt.Items.Add(NeededClasses.ElementAt(13).ElementAt(i));
-                    }
-
-                }
-
-                if (Degree3.Text == "Game Programming and Development")
-                {
-                    for (int i = 0; i <= NeededClasses.ElementAt(13).Count - 1; i++)
-                    {
-                        Degree3Txt.Items.Add(NeededClasses.ElementAt(13).ElementAt(i));
-                    }
-
-                }
-
-                if (Degree1.Text == "Graphic Design and Media Arts")
                 {
                     for (int i = 0; i <= NeededClasses.ElementAt(14).Count - 1; i++)
                     {
@@ -475,7 +477,7 @@ namespace Main_Project
 
                 }
 
-                if (Degree2.Text == "Graphic Design and Media Arts")
+                if (Degree2.Text == "Information Technologies")
                 {
                     for (int i = 0; i <= NeededClasses.ElementAt(14).Count - 1; i++)
                     {
@@ -484,38 +486,199 @@ namespace Main_Project
 
                 }
 
-                if (Degree3.Text == "Graphic Design and Media Arts")
+                if (Degree3.Text == "Information Technologies")
                 {
                     for (int i = 0; i <= NeededClasses.ElementAt(14).Count - 1; i++)
                     {
                         Degree3Txt.Items.Add(NeededClasses.ElementAt(14).ElementAt(i));
+                    }
+                }
+
+                    if (Degree1.Text == "Mechanical Engineering")
+                    {
+                        for (int i = 0; i <= NeededClasses.ElementAt(15).Count - 1; i++)
+                        {
+                            Degree1Txt.Items.Add(NeededClasses.ElementAt(15).ElementAt(i));
+                        }
+
+                    }
+
+                    if (Degree2.Text == "Mechanical Engineering")
+                    {
+                        for (int i = 0; i <= NeededClasses.ElementAt(15).Count - 1; i++)
+                        {
+                            Degree2Txt.Items.Add(NeededClasses.ElementAt(15).ElementAt(i));
+                        }
+
+                    }
+
+                    if (Degree3.Text == "Mechanical Engineering")
+                    {
+                        for (int i = 0; i <= NeededClasses.ElementAt(15).Count - 1; i++)
+                        {
+                            Degree3Txt.Items.Add(NeededClasses.ElementAt(15).ElementAt(i));
+                        }
+
+                    }
+
+                if (Degree1.Text == "Biology")
+                {
+                    for (int i = 0; i <= NeededClasses.ElementAt(4).Count - 1; i++)
+                    {
+                        Degree1Txt.Items.Add(NeededClasses.ElementAt(4).ElementAt(i));
+                    }
+
+                }
+
+                if (Degree2.Text == "Biology")
+                {
+                    for (int i = 0; i <= NeededClasses.ElementAt(4).Count - 1; i++)
+                    {
+                        Degree2Txt.Items.Add(NeededClasses.ElementAt(4).ElementAt(i));
+                    }
+
+                }
+
+                if (Degree3.Text == "Biology")
+                {
+                    for (int i = 0; i <= NeededClasses.ElementAt(4).Count - 1; i++)
+                    {
+                        Degree3Txt.Items.Add(NeededClasses.ElementAt(4).ElementAt(i));
+                    }
+
+                }
+
+                if (Degree1.Text == "Environmental Science")
+                {
+                    for (int i = 0; i <= NeededClasses.ElementAt(10).Count - 1; i++)
+                    {
+                        Degree1Txt.Items.Add(NeededClasses.ElementAt(10).ElementAt(i));
+                    }
+
+                }
+
+                if (Degree2.Text == "Environmental Science")
+                {
+                    for (int i = 0; i <= NeededClasses.ElementAt(10).Count - 1; i++)
+                    {
+                        Degree2Txt.Items.Add(NeededClasses.ElementAt(10).ElementAt(i));
+                    }
+
+                }
+
+                if (Degree3.Text == "Environmental Science")
+                {
+                    for (int i = 0; i <= NeededClasses.ElementAt(10).Count - 1; i++)
+                    {
+                        Degree3Txt.Items.Add(NeededClasses.ElementAt(10).ElementAt(i));
+                    }
+
+                }
+
+                if (Degree1.Text == "Game Art and Development")
+                {
+                    for (int i = 0; i <= NeededClasses.ElementAt(11).Count - 1; i++)
+                    {
+                        Degree1Txt.Items.Add(NeededClasses.ElementAt(11).ElementAt(i));
+                    }
+
+                }
+
+                if (Degree2.Text == "Game Art and Development")
+                {
+                    for (int i = 0; i <= NeededClasses.ElementAt(11).Count - 1; i++)
+                    {
+                        Degree2Txt.Items.Add(NeededClasses.ElementAt(11).ElementAt(i));
+                    }
+
+                }
+
+                if (Degree3.Text == "Game Art and Development")
+                {
+                    for (int i = 0; i <= NeededClasses.ElementAt(11).Count - 1; i++)
+                    {
+                        Degree3Txt.Items.Add(NeededClasses.ElementAt(11).ElementAt(i));
+                    }
+
+                }
+
+                if (Degree1.Text == "Game Programming and Development")
+                {
+                    for (int i = 0; i <= NeededClasses.ElementAt(12).Count - 1; i++)
+                    {
+                        Degree1Txt.Items.Add(NeededClasses.ElementAt(12).ElementAt(i));
+                    }
+
+                }
+
+                if (Degree2.Text == "Game Programming and Development")
+                {
+                    for (int i = 0; i <= NeededClasses.ElementAt(12).Count - 1; i++)
+                    {
+                        Degree2Txt.Items.Add(NeededClasses.ElementAt(12).ElementAt(i));
+                    }
+
+                }
+
+                if (Degree3.Text == "Game Programming and Development")
+                {
+                    for (int i = 0; i <= NeededClasses.ElementAt(12).Count - 1; i++)
+                    {
+                        Degree3Txt.Items.Add(NeededClasses.ElementAt(12).ElementAt(i));
+                    }
+
+                }
+
+                if (Degree1.Text == "Graphic Design and Media Arts")
+                {
+                    for (int i = 0; i <= NeededClasses.ElementAt(13).Count - 1; i++)
+                    {
+                        Degree1Txt.Items.Add(NeededClasses.ElementAt(13).ElementAt(i));
+                    }
+
+                }
+
+                if (Degree2.Text == "Graphic Design and Media Arts")
+                {
+                    for (int i = 0; i <= NeededClasses.ElementAt(13).Count - 1; i++)
+                    {
+                        Degree2Txt.Items.Add(NeededClasses.ElementAt(13).ElementAt(i));
+                    }
+
+                }
+
+                if (Degree3.Text == "Graphic Design and Media Arts")
+                {
+                    for (int i = 0; i <= NeededClasses.ElementAt(13).Count - 1; i++)
+                    {
+                        Degree3Txt.Items.Add(NeededClasses.ElementAt(13).ElementAt(i));
                     }
 
                 }
 
                 if (Degree1.Text == "Communication")
                 {
-                    for (int i = 0; i <= NeededClasses.ElementAt(15).Count - 1; i++)
+                    for (int i = 0; i <= NeededClasses.ElementAt(5).Count - 1; i++)
                     {
-                        Degree1Txt.Items.Add(NeededClasses.ElementAt(15).ElementAt(i));
+                        Degree1Txt.Items.Add(NeededClasses.ElementAt(5).ElementAt(i));
                     }
 
                 }
 
                 if (Degree2.Text == "Communication")
                 {
-                    for (int i = 0; i <= NeededClasses.ElementAt(15).Count - 1; i++)
+                    for (int i = 0; i <= NeededClasses.ElementAt(5).Count - 1; i++)
                     {
-                        Degree2Txt.Items.Add(NeededClasses.ElementAt(15).ElementAt(i));
+                        Degree2Txt.Items.Add(NeededClasses.ElementAt(5).ElementAt(i));
                     }
 
                 }
 
                 if (Degree3.Text == "Communication")
                 {
-                    for (int i = 0; i <= NeededClasses.ElementAt(15).Count - 1; i++)
+                    for (int i = 0; i <= NeededClasses.ElementAt(5).Count - 1; i++)
                     {
-                        Degree3Txt.Items.Add(NeededClasses.ElementAt(15).ElementAt(i));
+                        Degree3Txt.Items.Add(NeededClasses.ElementAt(5).ElementAt(i));
                     }
 
                 }

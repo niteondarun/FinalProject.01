@@ -8,3 +8,14 @@ C:\Users\mictj\OneDrive - SNHU\Software engineering\Recent Project\Main Project\
 C:\Users\mictj\OneDrive - SNHU\Software engineering\Recent Project\Main Project\Main Project\obj\Debug\Main Project.pdb
 C:\Users\mictj\OneDrive - SNHU\Software engineering\Recent Project\Main Project\Main Project\obj\Debug\Main_Project.Degree_Matcher.resources
 C:\Users\mictj\OneDrive - SNHU\Software engineering\Recent Project\Main Project\Main Project\obj\Debug\Main_Project.DisplayDegree.resources
+C:\Users\rapwo\Source\Repos\FinalProject.015\Main Project\Main Project\bin\Debug\Main Project.exe.config
+C:\Users\rapwo\Source\Repos\FinalProject.015\Main Project\Main Project\bin\Debug\Main Project.exe
+C:\Users\rapwo\Source\Repos\FinalProject.015\Main Project\Main Project\bin\Debug\Main Project.pdb
+C:\Users\rapwo\Source\Repos\FinalProject.015\Main Project\Main Project\obj\Debug\Main Project.csprojAssemblyReference.cache
+C:\Users\rapwo\Source\Repos\FinalProject.015\Main Project\Main Project\obj\Debug\Main_Project.DisplayDegree.resources
+C:\Users\rapwo\Source\Repos\FinalProject.015\Main Project\Main Project\obj\Debug\Main_Project.Degree_Matcher.resources
+C:\Users\rapwo\Source\Repos\FinalProject.015\Main Project\Main Project\obj\Debug\Main_Project.Properties.Resources.resources
+C:\Users\rapwo\Source\Repos\FinalProject.015\Main Project\Main Project\obj\Debug\Main Project.csproj.GenerateResource.cache
+C:\Users\rapwo\Source\Repos\FinalProject.015\Main Project\Main Project\obj\Debug\Main Project.csproj.CoreCompileInputs.cache
+C:\Users\rapwo\Source\Repos\FinalProject.015\Main Project\Main Project\obj\Debug\Main Project.exe
+C:\Users\rapwo\Source\Repos\FinalProject.015\Main Project\Main Project\obj\Debug\Main Project.pdb

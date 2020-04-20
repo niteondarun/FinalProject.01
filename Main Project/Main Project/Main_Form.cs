@@ -152,21 +152,20 @@ namespace Main_Project
             DegreeDatabase[1] = AirTrafMgmt;
             DegreeDatabase[2] = AviationMgmt;
             DegreeDatabase[3] = AviationOpMgmt;
-            DegreeDatabase[4] = CompSci;
-            DegreeDatabase[5] = ConstMgmt;
-            DegreeDatabase[6] = ElecAndCompEng;
-            DegreeDatabase[7] = ElecEng;
-            DegreeDatabase[8] = IT;
-            DegreeDatabase[9] = MechEng;
-            DegreeDatabase[10] = Biology;
-            DegreeDatabase[11] = EnvirSci;
-            DegreeDatabase[12] = GameArtDev;
-            DegreeDatabase[13] = GameProAndDev;
-            DegreeDatabase[14] = GraphDesAndMedArt;
-            DegreeDatabase[15] = Communication;
-     
+            DegreeDatabase[4] = Biology;
+            DegreeDatabase[5] = Communication;
+            DegreeDatabase[6] = CompSci;
+            DegreeDatabase[7] = ConstMgmt;
+            DegreeDatabase[8] = ElecAndCompEng;
+            DegreeDatabase[9] = ElecEng;
+            DegreeDatabase[10] = EnvirSci;
+            DegreeDatabase[11] = GameArtDev;
+            DegreeDatabase[12] = GameProAndDev;
+            DegreeDatabase[13] = GraphDesAndMedArt;
+            DegreeDatabase[14] = IT;
+            DegreeDatabase[15] = MechEng;
     
-    //copy full degrees to missing classes array
+            //copy full degrees to missing classes array
             MissingClassesTowardsDegree = DegreeDatabase;
 
            
@@ -193,7 +192,9 @@ namespace Main_Project
             List<string> ListofDegree = new List<string>{ "Aeronautical Engineering","Air Traffic Management",
                 "Aviation Management", "Aviation and Operations Management","Computer Science",
                 "Construction Management", "Electrical and Computer Engineering","Electrical Engineering",
-                "Information Technologies","Mechanical Engineering","Biology","Environmental Science","Game Art and Development","Game Programming and Development","Graphic Design and Media Arts","Communication"};
+                "Information Technologies","Mechanical Engineering","Biology","Environmental Science",
+                "Game Art and Development","Game Programming and Development","Graphic Design and Media Arts","Communication"};
+            ListofDegree.Sort();
             List<string> removing = RemoveList();
             //goes through the selected code to remove
             for (int i = 0; i <= removing.Count - 1; i++)
